@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class AddNewTask extends StatelessWidget {
+  final Function addTaskCallBack;
+  AddNewTask(this.addTaskCallBack);
+
+
   @override
   Widget build(BuildContext context) {
+    String? newTaskTitle;
     return Container(
       color: Color(0xff737373),
       child: Container(
@@ -29,13 +34,17 @@ class AddNewTask extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              onChanged: (newText) {
+                newTaskTitle = newText;
+              },
             ),
             SizedBox(
               height: 20.0,
             ),
             ElevatedButton(
               onPressed: () {
-                //
+                
+               addTaskCallBack(newTaskTitle);
               },
               child: Text(
                 "Add",
