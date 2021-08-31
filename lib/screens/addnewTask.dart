@@ -34,7 +34,9 @@ class AddNewTask extends StatelessWidget {
               height: 20.0,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                //
+              },
               child: Text(
                 "Add",
                 style: TextStyle(
