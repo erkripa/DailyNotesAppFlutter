@@ -1,8 +1,9 @@
+import 'package:daily_notes/models/task_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddNewTask extends StatelessWidget {
-  final Function addTaskCallBack;
-  AddNewTask(this.addTaskCallBack);
+ 
 
 
   @override
@@ -44,7 +45,9 @@ class AddNewTask extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 
-               addTaskCallBack(newTaskTitle);
+               Provider.of<TaskData>(context, listen: false)
+                    .addTask(newTaskTitle!);
+                Navigator.pop(context);
               },
               child: Text(
                 "Add",
