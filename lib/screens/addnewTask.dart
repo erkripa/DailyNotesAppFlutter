@@ -3,11 +3,18 @@ import 'package:daily_notes/models/task_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddNewTask extends StatelessWidget {
+class AddNewTask extends StatefulWidget {
+  @override
+  State<AddNewTask> createState() => _AddNewTaskState();
+}
+
+class _AddNewTaskState extends State<AddNewTask> {
+  final _taskDesFormKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
+  final _taskNameFormKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
+  final _taskNameController = TextEditingController();
+  final _taskDesController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    String? newTaskTitle;
-    String? newTaskSubTitle;
     return Container(
       color: Color(0xff737373),
       child: Container(
@@ -31,31 +38,52 @@ class AddNewTask extends StatelessWidget {
                 color: Colors.lightBlueAccent,
               ),
             ),
-            TextFormField(
-              decoration: textformFieldDecoration,
-              autofocus: true,
-              textAlign: TextAlign.left,
-              onChanged: (newText) {
-                newTaskTitle = newText;
-              },
+            Form(
+              key: _taskNameFormKey,
+              child: TextFormField(
+                controller: _taskNameController,
+                decoration: textformFieldDecoration,
+                autofocus: true,
+                textAlign: TextAlign.left,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your task name';
+                  }
+                  return null;
+                },
+              ),
             ),
-            TextFormField(
-              decoration: textformFieldDecoration.copyWith(
-                  hintText: 'Enter Your new task descriptions.'),
-              autofocus: true,
-              textAlign: TextAlign.left,
-              onChanged: (newText) {
-                newTaskSubTitle = newText;
-              },
+            Form(
+              key: _taskDesFormKey,
+              child: TextFormField(
+                controller: _taskDesController,
+                decoration: textformFieldDecoration.copyWith(
+                    hintText: 'Enter Your new task descriptions.'),
+                autofocus: true,
+                textAlign: TextAlign.left,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your task descriptions.';
+                  }
+                  return null;
+                },
+              ),
             ),
             SizedBox(
               height: 20.0,
             ),
             ElevatedButton(
               onPressed: () {
-                Provider.of<TaskData>(context, listen: false)
-                    .addTask(newTaskTitle!, newTaskSubTitle!);
-                Navigator.pop(context);
+                if (_taskNameFormKey.currentState!.validate()) {
+                  if (_taskDesFormKey.currentState!.validate()) {
+                    Provider.of<TaskData>(context, listen: false)
+                        .addTask(
+                        _taskNameController.text, _taskDesController.text);
+                    Navigator.pop(context);
+                  }
+                } else {
+                  return null;
+                }
               },
               child: Text(
                 "Add",
