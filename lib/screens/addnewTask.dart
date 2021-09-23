@@ -1,14 +1,13 @@
+import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddNewTask extends StatelessWidget {
- 
-
-
   @override
   Widget build(BuildContext context) {
     String? newTaskTitle;
+    String? newTaskSubTitle;
     return Container(
       color: Color(0xff737373),
       child: Container(
@@ -32,11 +31,21 @@ class AddNewTask extends StatelessWidget {
                 color: Colors.lightBlueAccent,
               ),
             ),
-            TextField(
+            TextFormField(
+              decoration: textformFieldDecoration,
               autofocus: true,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.left,
               onChanged: (newText) {
                 newTaskTitle = newText;
+              },
+            ),
+            TextFormField(
+              decoration: textformFieldDecoration.copyWith(
+                  hintText: 'Enter Your new task descriptions.'),
+              autofocus: true,
+              textAlign: TextAlign.left,
+              onChanged: (newText) {
+                newTaskSubTitle = newText;
               },
             ),
             SizedBox(
@@ -44,9 +53,8 @@ class AddNewTask extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                
-               Provider.of<TaskData>(context, listen: false)
-                    .addTask(newTaskTitle!);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(newTaskTitle!, newTaskSubTitle!);
                 Navigator.pop(context);
               },
               child: Text(

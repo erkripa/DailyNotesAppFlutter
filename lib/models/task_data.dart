@@ -1,15 +1,10 @@
 import 'dart:collection';
 
 import 'package:daily_notes/models/task.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/Material.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [
-    Task(name: "Buy Egg"),
-    Task(name: "Buy Ornage"),
-    Task(name: "Buy Apple"),
-    Task(name: "Buy Banana"),
-    Task(name: "Buy weryvery"),
   ];
 
   UnmodifiableListView<Task> get tasks {
@@ -20,9 +15,10 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
-  void addTask(String newTaskTitle) {
-    final task = Task(name: newTaskTitle);
+  void addTask(String? newTaskTitle,String newSubTitle) {
+    final task = Task(name: newTaskTitle,subname: newSubTitle);
     _tasks.add(task);
+    
     notifyListeners();
   }
 
