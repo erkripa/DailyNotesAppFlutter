@@ -9,8 +9,8 @@ class AddNewTask extends StatefulWidget {
 }
 
 class _AddNewTaskState extends State<AddNewTask> {
-  final _taskDesFormKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
-  final _taskNameFormKey = GlobalKey<FormState>(debugLabel: '_EmailFormState');
+  final _taskDesFormKey = GlobalKey<FormState>(debugLabel: 'taskNameState');
+  final _taskNameFormKey = GlobalKey<FormState>(debugLabel: 'taskDesState');
   final _taskNameController = TextEditingController();
   final _taskDesController = TextEditingController();
   @override

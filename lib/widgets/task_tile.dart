@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class TaskTile extends StatelessWidget {
@@ -18,27 +20,43 @@ class TaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        onLongPress: longPressCallBack,
-        title: Text(
-          taskTittle!,
-          style: TextStyle(
-            color: Colors.deepPurple,
-            fontWeight: FontWeight.bold,
-            decoration: isChecked! ? TextDecoration.lineThrough : null,
-          ),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+      
+      onLongPress: longPressCallBack,
+      title: Text(
+        taskTittle!,
+        style: TextStyle(
+          color: Colors.deepPurple,
+          fontWeight: FontWeight.bold,
+          decoration: isChecked! ? TextDecoration.lineThrough : null,
         ),
-        subtitle: Text(
-          taskSubTitle!,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+      subtitle: Text(
+        taskSubTitle!,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(),
+      ),
+      trailing: SizedBox(
+        width: 80,
+        child: Row(
+          children: [
+            Checkbox(
+              activeColor: Colors.lightBlueAccent,
+              value: isChecked,
+              onChanged: checkBoxCallBack,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 5.0),
+              child: Icon(Icons.delete),
+            ),
+          ],
         ),
-        trailing: Checkbox(
-          activeColor: Colors.lightBlueAccent,
-          value: isChecked,
-          onChanged: checkBoxCallBack,
-        ));
+      ),
+    );
   }
 }
