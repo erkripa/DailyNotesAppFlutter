@@ -38,3 +38,8 @@ const kAlertDescStyle = TextStyle(
 );
 const kAlertButtonstyle =
     TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
+const kTextEmtystyle = TextStyle(
+  color: Colors.grey,
+  fontSize: 18,
+);
+

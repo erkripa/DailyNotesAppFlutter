@@ -1,3 +1,4 @@
+import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task_data.dart';
 import 'package:daily_notes/widgets/task_tile.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,16 @@ class AllTask extends StatelessWidget {
       appBar: appBar,
       body: Consumer<TaskData>(
         builder: (context, taskData, _) {
+          if (taskData.taskCount == 0) {
+            return Center(
+              child: Text(
+                "You Notebook is Empty!",
+                style: GoogleFonts.mcLaren(
+                  textStyle: kTextEmtystyle,
+                ),
+              ),
+            );
+          }
           return ListView.builder(
             itemBuilder: (context, index) {
               final task = taskData.tasks[index];

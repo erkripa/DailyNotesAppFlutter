@@ -1,6 +1,8 @@
+import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task_data.dart';
 import 'package:daily_notes/widgets/task_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class TaskLists extends StatelessWidget {
@@ -10,8 +12,10 @@ class TaskLists extends StatelessWidget {
       if (taskData.taskCount == 0) {
         return Center(
           child: Text(
-            "data",
-            style: TextStyle(),
+            "You Notebook is Empty!",
+            style: GoogleFonts.mcLaren(
+              textStyle: kTextEmtystyle,
+            ),
           ),
         );
       }
