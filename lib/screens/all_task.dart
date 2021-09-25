@@ -1,6 +1,7 @@
 import 'package:daily_notes/models/task_data.dart';
 import 'package:daily_notes/widgets/task_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AllTask extends StatelessWidget {
@@ -9,7 +10,12 @@ class AllTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appBar = AppBar(
-      title: Text('All Task'),
+      backgroundColor: Colors.lightBlueAccent,
+      elevation: 0.0,
+      title: Text(
+        'All Task',
+        style: GoogleFonts.mcLaren(),
+      ),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
@@ -17,9 +23,11 @@ class AllTask extends StatelessWidget {
               child: Text(
             "${Provider.of<TaskData>(context).taskCount} Task",
             textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.mcLaren(
+              textStyle: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           )),
         )
@@ -36,9 +44,11 @@ class AllTask extends StatelessWidget {
                 isChecked: taskData.tasks[index].isDone,
                 taskTittle: task.name,
                 taskSubTitle: task.subname,
+                formatedDate: task.date,
                 checkBoxCallBack: (checkboxState) {
                   taskData.upDateTask(task);
                 },
+                ontap: () => taskData.alertMethod(context, task),
               );
             },
             itemCount: taskData.taskCount,

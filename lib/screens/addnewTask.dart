@@ -1,6 +1,7 @@
 import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task_data.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AddNewTask extends StatefulWidget {
@@ -29,20 +30,20 @@ class _AddNewTaskState extends State<AddNewTask> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              "Add Task",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.w700,
-                color: Colors.lightBlueAccent,
-              ),
-            ),
+            Text("Add Task",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.mcLaren(
+                  textStyle: TextStyle(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.lightBlueAccent,
+                  ),
+                )),
             Form(
               key: _taskNameFormKey,
               child: TextFormField(
                 controller: _taskNameController,
-                decoration: textformFieldDecoration,
+                decoration: kTextformFieldDecoration,
                 autofocus: true,
                 textAlign: TextAlign.left,
                 validator: (value) {
@@ -57,7 +58,7 @@ class _AddNewTaskState extends State<AddNewTask> {
               key: _taskDesFormKey,
               child: TextFormField(
                 controller: _taskDesController,
-                decoration: textformFieldDecoration.copyWith(
+                decoration: kTextformFieldDecoration.copyWith(
                     hintText: 'Enter Your new task descriptions.'),
                 autofocus: true,
                 textAlign: TextAlign.left,
@@ -76,9 +77,11 @@ class _AddNewTaskState extends State<AddNewTask> {
               onPressed: () {
                 if (_taskNameFormKey.currentState!.validate()) {
                   if (_taskDesFormKey.currentState!.validate()) {
-                    Provider.of<TaskData>(context, listen: false)
-                        .addTask(
-                        _taskNameController.text, _taskDesController.text);
+                    Provider.of<TaskData>(context, listen: false).addTask(
+                      _taskNameController.text,
+                      _taskDesController.text,
+                      TaskData().formattedDate,
+                    );
                     Navigator.pop(context);
                   }
                 } else {
@@ -87,9 +90,11 @@ class _AddNewTaskState extends State<AddNewTask> {
               },
               child: Text(
                 "Add",
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16.0,
+                style: GoogleFonts.mcLaren(
+                  textStyle: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.0,
+                  ),
                 ),
               ),
             ),

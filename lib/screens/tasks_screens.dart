@@ -4,11 +4,20 @@ import 'package:daily_notes/screens/all_task.dart';
 import 'package:daily_notes/widgets/task_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TasksScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          color: Colors.white10,
+          height: 50.0,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,
           child: Icon(
@@ -39,13 +48,13 @@ class TasksScreens extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.white,
-                  radius: 30.0,
+                  radius: 25.0,
                   child: IconButton(
                     onPressed: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => AllTask())),
                     icon: Icon(
                       Icons.list,
-                      size: 40.0,
+                      size: 30.0,
                       color: Colors.lightBlueAccent,
                     ),
                   ),
@@ -55,10 +64,12 @@ class TasksScreens extends StatelessWidget {
                 ),
                 Text(
                   "Daily Notes",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 50.0,
+                  style: GoogleFonts.mcLaren(
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 50.0,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -66,9 +77,11 @@ class TasksScreens extends StatelessWidget {
                 ),
                 Text(
                   "${Provider.of<TaskData>(context).taskCount} Tasks",
-                  style: TextStyle(
+                  style: GoogleFonts.mcLaren(
+                    textStyle: TextStyle(
                     fontSize: 20.0,
                     color: Colors.white,
+                  ),
                   ),
                 ),
               ],

@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:daily_notes/models/task.dart';
 import 'package:flutter/Material.dart';
+import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class TaskData extends ChangeNotifier {
@@ -15,8 +16,8 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
-  void addTask(String? newTaskTitle, String newSubTitle) {
-    final task = Task(name: newTaskTitle, subname: newSubTitle);
+  void addTask(String? newTaskTitle, String newSubTitle, String date) {
+    final task = Task(name: newTaskTitle, subname: newSubTitle, date: date);
     _tasks.add(task);
 
     notifyListeners();
@@ -32,6 +33,7 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
+    String formattedDate = DateFormat('dd/MM/yyyy  kk:mm').format(DateTime.now());
 
 
   void alertMethod(BuildContext context, Task task) {

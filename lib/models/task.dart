@@ -1,12 +1,18 @@
 import 'package:flutter/cupertino.dart';
 
-class Task{
+class Task {
   String? name;
-  String subname;
+  String? subname;
   bool? isDone;
-  Task({@required this.name,this.subname="Task Descriptions..", this.isDone = false});
+  String? date;
+  Task({
+    @required this.name,
+    this.subname,
+    this.isDone = false,
+    this.date,
+  });
 
-  void toggleDone(){
+  void toggleDone() {
     isDone = !isDone!;
   }
 }
