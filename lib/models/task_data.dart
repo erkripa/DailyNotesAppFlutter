@@ -1,5 +1,5 @@
 import 'dart:collection';
-
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task.dart';
 import 'package:flutter/Material.dart';
@@ -88,5 +88,26 @@ class TaskData extends ChangeNotifier {
         )
       ],
     ).show();
+  }
+
+  void dialogInfo(BuildContext context, Task task) {
+    AwesomeDialog(
+      context: context,
+      headerAnimationLoop: false,
+      dialogType: DialogType.NO_HEADER,
+      title: task.name,
+      customHeader: Image.asset(
+        'assets/logo.png',
+        height: 78,
+        width: 80,
+        fit: BoxFit.cover,
+      ),
+      desc: task.subname,
+      btnOkOnPress: () {
+        debugPrint('OnClcik');
+      },
+      btnOkColor: Colors.lightBlueAccent,
+      btnOkIcon: Icons.check_circle,
+    )..show();
   }
 }

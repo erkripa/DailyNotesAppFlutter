@@ -49,6 +49,7 @@ class AllTask extends StatelessWidget {
                   taskData.upDateTask(task);
                 },
                 ontap: () => taskData.alertMethod(context, task),
+                onTextTap: () => taskData.dialogInfo(context, task),
               );
             },
             itemCount: taskData.taskCount,
