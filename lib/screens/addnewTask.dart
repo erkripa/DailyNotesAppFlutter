@@ -10,8 +10,8 @@ class AddNewTask extends StatefulWidget {
 }
 
 class _AddNewTaskState extends State<AddNewTask> {
-  final _taskDesFormKey = GlobalKey<FormState>(debugLabel: 'taskNameState');
   final _taskNameFormKey = GlobalKey<FormState>(debugLabel: 'taskDesState');
+  final _taskDesFormKey = GlobalKey<FormState>(debugLabel: 'taskNameState');
   final _taskNameController = TextEditingController();
   final _taskDesController = TextEditingController();
   @override
@@ -30,15 +30,17 @@ class _AddNewTaskState extends State<AddNewTask> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text("Add Task",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.mcLaren(
-                  textStyle: TextStyle(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.lightBlueAccent,
-                  ),
-                )),
+            Text(
+              "Add Task",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.mcLaren(
+                textStyle: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.lightBlueAccent,
+                ),
+              ),
+            ),
             Form(
               key: _taskNameFormKey,
               child: TextFormField(
@@ -46,6 +48,9 @@ class _AddNewTaskState extends State<AddNewTask> {
                 decoration: kTextformFieldDecoration,
                 autofocus: true,
                 textAlign: TextAlign.left,
+                style: GoogleFonts.mcLaren(
+                  textStyle: kTextFormFeildstyel,
+                ),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your task name';
@@ -62,6 +67,9 @@ class _AddNewTaskState extends State<AddNewTask> {
                     hintText: 'Enter Your new task descriptions.'),
                 autofocus: true,
                 textAlign: TextAlign.left,
+                style: GoogleFonts.mcLaren(
+                  textStyle: kTextFormFeildstyel,
+                ),
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter your task descriptions.';

@@ -8,6 +8,7 @@ class TaskTile extends StatelessWidget {
   final String? taskSubTitle;
   final Function(bool?)? checkBoxCallBack;
   final Function()? ontap;
+  final Function()? onTextTap;
   final String? formatedDate;
 
   TaskTile({
@@ -16,12 +17,11 @@ class TaskTile extends StatelessWidget {
     @required this.isChecked,
     this.checkBoxCallBack,
     this.ontap, this.formatedDate,
+    this.onTextTap,
   });
 
   @override
   Widget build(BuildContext context) {
-  
-    print(formatedDate);
     var taskTitleStyle = GoogleFonts.mcLaren(
       textStyle: TextStyle(
         color: isChecked! ? Colors.black54 : Colors.lightBlueAccent,
@@ -32,12 +32,15 @@ class TaskTile extends StatelessWidget {
     );
 
     return ListTile(
-      title: Text(
-        taskTittle!,
-        textAlign: TextAlign.left,
-        style: taskTitleStyle,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+      title: GestureDetector(
+        onTap: onTextTap,
+        child: Text(
+          taskTittle!,
+          textAlign: TextAlign.left,
+          style: taskTitleStyle,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,9 +52,12 @@ class TaskTile extends StatelessWidget {
             style: GoogleFonts.mcLaren(textStyle: kTasksubtitlestyle),
           ),
           SizedBox(height: 2.0),
-          Text(
-            formatedDate!,
-            style: kDateTimeStyele,
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Text(
+              formatedDate!,
+              style: kDateTimeStyele,
+            ),
           ),
         ],
       ),

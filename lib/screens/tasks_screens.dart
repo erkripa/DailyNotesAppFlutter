@@ -62,15 +62,25 @@ class TasksScreens extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(
-                  "Daily Notes",
-                  style: GoogleFonts.mcLaren(
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 50.0,
+                Row(
+                  children: [
+                    Text(
+                      "Daily Notes",
+                      style: GoogleFonts.mcLaren(
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 30.0,
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: Image.asset(
+                        'assets/logo.png',
+                        height: 100,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 10.0,
@@ -79,9 +89,9 @@ class TasksScreens extends StatelessWidget {
                   "${Provider.of<TaskData>(context).taskCount} Tasks",
                   style: GoogleFonts.mcLaren(
                     textStyle: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

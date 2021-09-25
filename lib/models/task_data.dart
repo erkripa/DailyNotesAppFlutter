@@ -1,7 +1,9 @@
 import 'dart:collection';
 
+import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task.dart';
 import 'package:flutter/Material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -33,23 +35,33 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-    String formattedDate = DateFormat('dd/MM/yyyy  kk:mm').format(DateTime.now());
-
+  String formattedDate = DateFormat('dd/MM/yyyy  kk:mm').format(DateTime.now());
 
   void alertMethod(BuildContext context, Task task) {
     Alert(
       context: context,
-      type: AlertType.info,
+      type: AlertType.none,
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      image: Icon(
+        Icons.delete,
+        color: Colors.red,
+      ),
       title: "Alert",
+      style: AlertStyle(
+        alertElevation: 0.0,
+        titleStyle: GoogleFonts.mcLaren(textStyle: kAlertTitleStyle),
+        descStyle: GoogleFonts.mcLaren(
+          textStyle: kAlertDescStyle,
+        ),
+      ),
       desc: "Are you sure want to delete the Task.",
       buttons: [
         DialogButton(
           child: Text(
             "Yes",
-            style: TextStyle(
-                color: Colors.white,
-                // fontSize: 20,
-                fontWeight: FontWeight.bold),
+            style: GoogleFonts.mcLaren(
+              textStyle: kAlertButtonstyle,
+            ),
           ),
           onPressed: () {
             _tasks.remove(task);
@@ -62,10 +74,9 @@ class TaskData extends ChangeNotifier {
         DialogButton(
           child: Text(
             "No",
-            style: TextStyle(
-                color: Colors.white,
-                // fontSize: 20,
-                fontWeight: FontWeight.bold),
+            style: GoogleFonts.mcLaren(
+              textStyle: kAlertButtonstyle,
+            ),
           ),
           onPressed: () => Navigator.pop(context),
           gradient: LinearGradient(
@@ -77,8 +88,5 @@ class TaskData extends ChangeNotifier {
         )
       ],
     ).show();
-    
   }
-
-
 }
