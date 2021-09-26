@@ -2,10 +2,10 @@ import 'dart:collection';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task.dart';
+import 'package:daily_notes/widgets/dialog_body_widget.dart';
 import 'package:flutter/Material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [];
@@ -38,56 +38,34 @@ class TaskData extends ChangeNotifier {
   String formattedDate = DateFormat('dd/MM/yyyy  kk:mm').format(DateTime.now());
 
   void alertMethod(BuildContext context, Task task) {
-    Alert(
+    AwesomeDialog(
       context: context,
-      type: AlertType.none,
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-      image: Icon(
-        Icons.delete,
-        color: Colors.red,
+      dialogType: DialogType.WARNING,
+      headerAnimationLoop: false,
+      animType: AnimType.SCALE,
+      showCloseIcon: true,
+      closeIcon: Icon(Icons.close, color: Colors.lightBlueAccent
       ),
-      title: "Alert",
-      style: AlertStyle(
-        alertElevation: 0.0,
-        titleStyle: GoogleFonts.mcLaren(textStyle: kAlertTitleStyle),
-        descStyle: GoogleFonts.mcLaren(
-          textStyle: kAlertDescStyle,
-        ),
+      btnCancelText: 'No',
+      btnOkText: 'Yes',
+      btnOkColor: Colors.lightBlueAccent,
+      btnCancelColor: Colors.red[300],
+      body: DialogBodyWidget(
+        dialogTitle: "Delete Tassk?",
+        dialogDesc: "Are you sure want to delete this task from the list?",
       ),
-      desc: "Are you sure want to delete the Task.",
-      buttons: [
-        DialogButton(
-          child: Text(
-            "Yes",
-            style: GoogleFonts.mcLaren(
-              textStyle: kAlertButtonstyle,
-            ),
-          ),
-          onPressed: () {
-            _tasks.remove(task);
-
-            Navigator.pop(context);
-            notifyListeners();
-          },
-          color: Color.fromRGBO(0, 179, 134, 1.0),
-        ),
-        DialogButton(
-          child: Text(
-            "No",
-            style: GoogleFonts.mcLaren(
-              textStyle: kAlertButtonstyle,
-            ),
-          ),
-          onPressed: () => Navigator.pop(context),
-          gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(116, 116, 191, 1.0),
-              Color.fromRGBO(52, 138, 199, 1.0)
-            ],
-          ),
-        )
-      ],
-    ).show();
+      btnCancelOnPress: () {},
+      onDissmissCallback: (type) {
+        debugPrint('Dialog Dissmiss from callback $type');
+      },
+      btnOkOnPress: () {
+        _tasks.remove(task);
+        notifyListeners();
+      },
+      buttonsTextStyle: GoogleFonts.mcLaren(
+        textStyle: KDialogButtonTextStyle,
+      ),
+    )..show();
   }
 
   void dialogInfo(BuildContext context, Task task) {
@@ -95,66 +73,25 @@ class TaskData extends ChangeNotifier {
       context: context,
       headerAnimationLoop: false,
       dialogType: DialogType.NO_HEADER,
-      title: task.name,
+  
       customHeader: Image.asset(
         'assets/logo.png',
         height: 78,
         width: 80,
         fit: BoxFit.cover,
       ),
-      desc: task.subname,
+      body: DialogBodyWidget(
+        dialogTitle: task.name,
+        dialogDesc: task.subname,
+      ),
       btnOkOnPress: () {
         debugPrint('OnClcik');
       },
       btnOkColor: Colors.lightBlueAccent,
       btnOkIcon: Icons.check_circle,
+       buttonsTextStyle: GoogleFonts.mcLaren(
+        textStyle: KDialogButtonTextStyle,
+      ),
     )..show();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -242,13 +242,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.0"
-  rflutter_alert:
-    dependency: "direct main"
-    description:
-      name: rflutter_alert
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
   simple_animations:
     dependency: transitive
     description:

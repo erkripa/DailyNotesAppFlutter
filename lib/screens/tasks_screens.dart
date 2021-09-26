@@ -1,3 +1,4 @@
+import 'package:daily_notes/constant.dart';
 import 'package:daily_notes/models/task_data.dart';
 import 'package:daily_notes/screens/addnewTask.dart';
 import 'package:daily_notes/screens/all_task.dart';
@@ -42,7 +43,7 @@ class TasksScreens extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(
-                top: 70.0, left: 30.0, bottom: 30.0, right: 30.0),
+                top: 60.0, left: 30.0, bottom: 30.0, right: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -58,9 +59,6 @@ class TasksScreens extends StatelessWidget {
                       color: Colors.lightBlueAccent,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 10.0,
                 ),
                 Row(
                   children: [
@@ -85,14 +83,28 @@ class TasksScreens extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(
-                  "${Provider.of<TaskData>(context).taskCount} Tasks",
-                  style: GoogleFonts.mcLaren(
-                    textStyle: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${Provider.of<TaskData>(context).taskCount} Tasks",
+                      style: GoogleFonts.mcLaren(
+                        textStyle: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ),
+                    Container(
+                      height: 35,
+                      padding: EdgeInsets.all(10),
+                      decoration: kDateContainerDecoration,
+                      child: Text(
+                        TaskData().formattedDate,
+                        style: kAlertDescStyle,
+                      ),
+                    )
+                  ],
                 ),
               ],
             ),

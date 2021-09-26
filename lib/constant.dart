@@ -43,3 +43,14 @@ const kTextEmtystyle = TextStyle(
   fontSize: 18,
 );
 
+const KDialogButtonTextStyle = TextStyle(
+  fontSize: 13.0,
+  fontWeight: FontWeight.bold,
+);
+
+var kDateContainerDecoration = BoxDecoration(
+  
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(10),
+  
+);
