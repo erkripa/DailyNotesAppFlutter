@@ -12,7 +12,7 @@ class TaskLists extends StatelessWidget {
       if (taskData.taskCount == 0) {
         return Center(
           child: Text(
-            "You Notebook is Empty!",
+            "Your Notebook is Empty!",
             style: GoogleFonts.mcLaren(
               textStyle: kTextEmtystyle,
             ),
