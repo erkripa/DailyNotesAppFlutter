@@ -35,13 +35,11 @@ This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
-# Screenshots
-![Daily Notes](https://user-images.githubusercontent.com/69295859/135116621-3c6b483b-f5d1-4271-913d-474f152ead96.png)
-![Daily notes2](https://user-images.githubusercontent.com/69295859/135116654-9061cac6-14ba-4c16-99ae-9a8c468d2ed1.png)
-![Daily Notes3](https://user-images.githubusercontent.com/69295859/135116669-8bbab32c-4fd5-46a8-a6d9-e29f427de025.png)
-![Daily Notes4](https://user-images.githubusercontent.com/69295859/135116698-b0de00e0-66d6-4974-acf4-d5b6b641bbee.png)
-![Daily Notes 5](https://user-images.githubusercontent.com/69295859/135116576-5e18e29a-e94c-4c42-b461-bcf2186a402d.png)
-![Daily Notes6](https://user-images.githubusercontent.com/69295859/135116725-cdfc1f83-080d-4941-af7b-5349637322be.png)
+# Screenshots 
+![Daily Notes](https://user-images.githubusercontent.com/69295859/135118226-c3926dec-c6c3-4a27-98d9-a8fc017b0550.png)![Daily notes2](https://user-images.githubusercontent.com/69295859/135118242-875a06fd-c818-4db6-a8c5-ff3788689cd2.png)![Daily Notes3](https://user-images.githubusercontent.com/69295859/135118250-753a1eaf-362a-4989-8523-e7543cbb8ebc.png)![Daily Notes4](https://user-images.githubusercontent.com/69295859/135118255-39d20fb6-0355-4795-99e1-0a3600b1ce0a.png)![Daily Notes 5](https://user-images.githubusercontent.com/69295859/135118262-f25809be-e01f-4b26-b825-210894cd5ff6.png)![Daily Notes6](https://user-images.githubusercontent.com/69295859/135118257-379c4117-994d-4b83-bd06-09ecfbf27fe6.png)
+
+ 
+
 
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
